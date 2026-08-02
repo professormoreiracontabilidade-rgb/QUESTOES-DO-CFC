@@ -15,3 +15,5 @@ Depois faça Commit e Push origin.
 OBSERVAÇÃO IMPORTANTE:
 Na Questão 20, o gabarito correto usado pelo quiz é D (CMV = R$ 50.000).
 A imagem original possui marcações visuais contraditórias nas alternativas, mas o quadro de gabarito indica D.
+
+Atualização: questões 21 a 30 incluídas no quiz e no modo de resolução por imagem.
