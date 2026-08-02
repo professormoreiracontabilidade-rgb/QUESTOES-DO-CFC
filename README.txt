@@ -1,17 +1,17 @@
-QUESTÕES DO CFC — PWA
-Curso de Contabilidade Professor Moreira
+QUESTÕES DO CFC — QUIZ PWA
 
-COMO PUBLICAR NO GITHUB WEB:
-1. Crie um repositório, por exemplo: QUESTOES-DO-CFC.
-2. Marque “Add a README file” ao criar o repositório.
-3. Clique em Add file > Upload files.
-4. Abra esta pasta extraída e arraste TODOS os arquivos e pastas para a página do GitHub.
-5. Clique em Commit changes.
-6. Vá em Settings > Pages.
-7. Em Source, escolha “Deploy from a branch”.
-8. Selecione branch “main” e pasta “/(root)”.
-9. Clique em Save.
+NOVA ESTRUTURA:
+1. O aluno lê a questão em texto e marca A, B, C ou D.
+2. Confirma a resposta.
+3. A tela seguinte informa acerto/erro e exibe a imagem completa da resolução.
+4. O aplicativo salva respostas, acertos, erros, favoritas e a última questão.
+5. Há listas de todas as questões, favoritas e questões erradas.
 
-OBSERVAÇÃO:
-- Não envie o arquivo ZIP fechado para o repositório. Extraia primeiro.
-- Para adicionar novas questões, coloque novas imagens na pasta imagens e atualize TOTAL e a lista do service-worker.js.
+PUBLICAÇÃO NO GITHUB:
+Substitua os arquivos antigos do repositório por todos os arquivos desta pasta.
+O index.html deve ficar na raiz.
+Depois faça Commit e Push origin.
+
+OBSERVAÇÃO IMPORTANTE:
+Na Questão 20, o gabarito correto usado pelo quiz é D (CMV = R$ 50.000).
+A imagem original possui marcações visuais contraditórias nas alternativas, mas o quadro de gabarito indica D.

@@ -3,77 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=yes">
-  <meta name="theme-color" content="#8b0000">
-  <meta name="description" content="Banco visual de questões do CFC — Curso de Contabilidade Professor Moreira">
+  <meta name="theme-color" content="#980000">
+  <meta name="description" content="Quiz de questões comentadas do CFC — Professor Moreira">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icones/icon-192.png">
   <link rel="apple-touch-icon" href="icones/icon-192.png">
   <link rel="stylesheet" href="style.css">
-  <title>Questões do CFC</title>
+  <title>Questões do CFC — Quiz</title>
 </head>
 <body>
-  <header class="topbar">
-    <button class="icon-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
-    <div class="brand-mini">
-      <img src="icones/icon-192.png" alt="Logo Questões do CFC">
-      <div><strong>QUESTÕES DO CFC</strong><span>Professor Moreira</span></div>
+<header class="topbar">
+  <button class="icon-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+  <div class="brand-mini"><img src="icones/icon-192.png" alt="Logo"><div><strong>QUESTÕES DO CFC</strong><span>Quiz Professor Moreira</span></div></div>
+  <button class="icon-btn" id="favBtn" aria-label="Favoritar">☆</button>
+</header>
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <div class="drawer-head"><img src="logo.png" alt="Logo"><button class="close-btn" id="closeDrawer">×</button></div>
+  <button data-action="home">🏠 Início</button>
+  <button data-action="goto">🔢 Ir para questão</button>
+  <button data-action="all">☷ Todas as questões</button>
+  <button data-action="favorites">⭐ Favoritas</button>
+  <button data-action="errors">❌ Refazer erradas</button>
+  <button data-action="reset">↺ Reiniciar desempenho</button>
+</aside>
+<div id="overlay" class="overlay"></div>
+<main>
+  <section id="home" class="home-screen">
+    <img class="hero-logo" src="logo.png" alt="Questões do CFC">
+    <h1>QUESTÕES DO CFC</h1>
+    <p>Responda primeiro. Confira a resolução na tela seguinte.</p>
+    <p class="course">Curso de Contabilidade Professor Moreira</p>
+    <button id="startBtn" class="primary">COMEÇAR O QUIZ</button>
+    <button id="continueBtn" class="secondary">CONTINUAR</button>
+    <div class="dashboard">
+      <div><b id="answeredHome">0</b><span>Respondidas</span></div>
+      <div><b id="correctHome">0</b><span>Acertos</span></div>
+      <div><b id="wrongHome">0</b><span>Erros</span></div>
+      <div><b id="percentHome">0%</b><span>Aproveitamento</span></div>
     </div>
-    <button class="icon-btn" id="favBtn" aria-label="Favoritar questão">☆</button>
-  </header>
+  </section>
 
-  <aside id="drawer" class="drawer" aria-hidden="true">
-    <div class="drawer-head">
-      <img src="logo.png" alt="Logo do aplicativo">
-      <button class="close-btn" id="closeDrawer" aria-label="Fechar menu">×</button>
-    </div>
-    <button data-action="home">🏠 Início</button>
-    <button data-action="goto">🔢 Ir para questão</button>
-    <button data-action="favorites">⭐ Favoritas</button>
-    <button data-action="resume">▶ Última estudada</button>
-    <button data-action="reset">↺ Reiniciar progresso</button>
-    <button data-action="about">ℹ Sobre</button>
-  </aside>
-  <div id="overlay" class="overlay"></div>
+  <section id="quizScreen" class="quiz-screen hidden">
+    <div class="progress-wrap"><div id="progressBar" class="progress-bar"></div></div>
+    <div class="question-top"><strong id="questionCounter">Questão 1 de 20</strong><span id="statusBadge" class="status-badge">Não respondida</span></div>
+    <article class="question-card">
+      <div id="questionText" class="question-text"></div>
+      <div id="options" class="options"></div>
+      <p id="selectionHint" class="selection-hint">Selecione uma alternativa.</p>
+      <button id="confirmBtn" class="confirm-btn" disabled>CONFIRMAR RESPOSTA</button>
+    </article>
+    <div class="quiz-nav"><button id="prevQuestion">◀ Anterior</button><button id="listBtn">☷ Lista</button><button id="nextQuestion">Próxima ▶</button></div>
+  </section>
 
-  <main>
-    <section id="home" class="home-screen">
-      <img class="hero-logo" src="logo.png" alt="Questões do CFC">
-      <h1>QUESTÕES DO CFC</h1>
-      <p>Banco visual de questões comentadas</p>
-      <p class="course">Curso de Contabilidade Professor Moreira</p>
-      <button id="startBtn" class="primary">COMEÇAR A ESTUDAR</button>
-      <button id="continueBtn" class="secondary">CONTINUAR DE ONDE PAREI</button>
-      <div class="stats"><span><b id="totalHome">20</b> questões</span><span><b id="doneHome">0</b> estudadas</span></div>
-    </section>
+  <section id="resultScreen" class="result-screen hidden">
+    <div id="feedback" class="feedback"></div>
+    <div class="result-summary"><span id="yourAnswer"></span><span id="rightAnswer"></span></div>
+    <p class="resolution-label">Veja agora a resolução completa:</p>
+    <div class="image-stage"><img id="resolutionImage" alt="Resolução da questão" draggable="false"></div>
+    <div class="result-actions"><button id="backToQuestion">↩ Voltar</button><button id="zoomBtn">🔍 Ampliar</button><button id="nextAfterResult">Próxima ▶</button></div>
+  </section>
 
-    <section id="viewer" class="viewer hidden">
-      <div class="progress-wrap"><div id="progressBar" class="progress-bar"></div></div>
-      <div class="question-meta">
-        <strong id="counter">Questão 1 de 20</strong>
-        <button id="zoomBtn" class="small-btn">🔍 Ampliar</button>
-      </div>
-      <div class="image-stage" id="imageStage">
-        <img id="questionImage" src="imagens/01.png" alt="Questão 1" draggable="false">
-      </div>
-      <div class="nav-bar">
-        <button id="prevBtn">◀ Anterior</button>
-        <button id="gridBtn">☷ Lista</button>
-        <button id="nextBtn">Próxima ▶</button>
-      </div>
-    </section>
-
-    <section id="listScreen" class="list-screen hidden">
-      <div class="list-head"><h2 id="listTitle">Todas as questões</h2><button id="backViewer" class="small-btn">Voltar</button></div>
-      <div id="questionGrid" class="question-grid"></div>
-    </section>
-  </main>
-
-  <div id="zoomModal" class="zoom-modal" aria-hidden="true">
-    <button id="closeZoom" class="zoom-close">×</button>
-    <img id="zoomImage" alt="Questão ampliada">
-  </div>
-
-  <div id="toast" class="toast"></div>
-  <script src="app.js"></script>
+  <section id="listScreen" class="list-screen hidden">
+    <div class="list-head"><h2 id="listTitle">Todas as questões</h2><button id="backHome" class="small-btn">Início</button></div>
+    <div id="questionGrid" class="question-grid"></div>
+  </section>
+</main>
+<div id="zoomModal" class="zoom-modal" aria-hidden="true"><button id="closeZoom" class="zoom-close">×</button><img id="zoomImage" alt="Resolução ampliada"></div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
 </body>
 </html>
